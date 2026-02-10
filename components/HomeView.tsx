@@ -9,44 +9,54 @@ interface HomeViewProps {
 }
 
 const PREPOSITION_TIPS = [
-  "Use 'at' for specific points, like 'at the door'!",
-  "Use 'in' for enclosed spaces, like 'in the box'!",
-  "Use 'on' for surfaces, like 'on the table'!",
-  "Movement 'into' means you're going inside something.",
-  "Movement 'onto' means you're landing on a surface.",
-  "'Between' is for two things; 'among' is for a group!",
-  "Don't use a preposition before 'home' when moving: 'Go home'!",
-  "Use 'by' for a deadline: 'Finish by Friday'!"
+  "Use 'at' for specific points, like 'at the bus stop'!",
+  "Use 'in' for 3D containers, like 'in the box'!",
+  "Use 'on' for 2D surfaces, like 'on the table'!",
+  "Movement 'into' means entering a space.",
+  "Movement 'onto' means landing on a surface.",
+  "'Between' is for two; 'among' is for a crowd!",
+  "Pro Tip: 'Go home' needs no preposition!",
+  "Use 'by' for time deadlines: 'by noon'!",
+  "Use 'since' for the start time of an action."
 ];
 
 const HomeView: React.FC<HomeViewProps> = ({ onLearn, onQuiz }) => {
-  const [tip, setTip] = useState<string>("Hi! I'm Shadow. Click me to learn a preposition tip!");
+  const [tip, setTip] = useState<string>("Hi! I'm Shadow. Click me for a preposition tip!");
   const [emotion, setEmotion] = useState<'happy' | 'thinking' | 'confused' | 'surprised'>('happy');
 
   const handleMascotClick = () => {
+    // Pick a new random tip and emotion
     const randomTip = PREPOSITION_TIPS[Math.floor(Math.random() * PREPOSITION_TIPS.length)];
     const emotions: ('happy' | 'thinking' | 'confused' | 'surprised')[] = ['happy', 'thinking', 'confused', 'surprised'];
     const randomEmotion = emotions[Math.floor(Math.random() * emotions.length)];
     
-    setTip(randomTip);
-    setEmotion(randomEmotion);
+    // Briefly clear tip to trigger re-animation if same tip picked
+    setTip("");
+    setTimeout(() => {
+      setTip(randomTip);
+      setEmotion(randomEmotion);
+    }, 50);
   };
 
   return (
-    <div className="h-full flex flex-col items-center justify-center p-6 text-center animate-in fade-in duration-700 bg-slate-950 relative overflow-hidden">
-      {/* 3D Mascot Section */}
+    <div className="h-full flex flex-col items-center justify-center p-6 text-center animate-in fade-in duration-1000 bg-slate-950 relative overflow-hidden">
+      {/* Dynamic Background Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/5 blur-[120px] rounded-full pointer-events-none"></div>
+      
+      {/* Interactive 3D Mascot Stage */}
       <div className="w-full h-80 relative mb-4">
-        <div className="absolute inset-0 bg-blue-500/10 blur-3xl rounded-full scale-50"></div>
         <Canvas shadows className="cursor-pointer">
-          <PerspectiveCamera makeDefault position={[0, 1.5, 5]} fov={40} />
-          <Environment preset="city" />
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[5, 5, 5]} intensity={1.5} castShadow />
+          {/* Moved camera slightly higher (y=1.6) and mascot lower (y=-0.9) to make room for bubble */}
+          <PerspectiveCamera makeDefault position={[0, 1.6, 6]} fov={35} />
+          <Environment preset="apartment" />
+          <ambientLight intensity={0.6} />
+          <pointLight position={[-5, 5, 5]} intensity={1} color="#60a5fa" />
+          <directionalLight position={[5, 10, 5]} intensity={1.5} castShadow shadow-mapSize={1024} />
           
           <Suspense fallback={null}>
-            <Float speed={2} rotationIntensity={0.5} floatIntensity={0.5}>
+            <Float speed={2.5} rotationIntensity={0.3} floatIntensity={0.5}>
               <Shadow 
-                position={[0, 0, 0]} 
+                position={[0, -0.9, 0]} 
                 emotion={emotion} 
                 message={tip}
                 onClick={handleMascotClick}
@@ -56,34 +66,43 @@ const HomeView: React.FC<HomeViewProps> = ({ onLearn, onQuiz }) => {
         </Canvas>
       </div>
       
-      <div className="relative z-10">
-        <h2 className="font-brand text-5xl md:text-8xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-300 tracking-tighter">
+      <div className="relative z-10 max-w-2xl">
+        <h2 className="font-brand text-5xl md:text-8xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400 tracking-tighter">
           The Baa-ckground
         </h2>
         
-        <p className="text-xl md:text-2xl text-blue-200/80 mb-4 italic font-medium">
+        <p className="text-xl md:text-2xl text-blue-300/60 mb-10 italic font-medium tracking-tight">
           "Learn Prepositions with Shadow"
         </p>
         
-        <div className="flex flex-col sm:flex-row gap-4 w-full max-w-xl mt-8 mx-auto">
+        <div className="flex flex-col sm:flex-row gap-5 w-full mt-2">
           <button
             onClick={onLearn}
-            className="flex-1 bg-blue-600 hover:bg-blue-500 text-white font-black py-5 px-8 rounded-2xl text-xl transition-all hover:scale-105 active:scale-95 shadow-2xl shadow-blue-900/40 border border-blue-400/20"
+            className="flex-1 bg-white text-slate-950 font-black py-5 px-8 rounded-3xl text-xl transition-all hover:scale-105 active:scale-95 shadow-2xl hover:shadow-blue-500/20"
           >
-            Start Learning
+            Start Academy
           </button>
           <button
             onClick={onQuiz}
-            className="flex-1 bg-slate-800 hover:bg-slate-700 text-white font-black py-5 px-8 rounded-2xl text-xl transition-all hover:scale-105 active:scale-95 border border-slate-700 shadow-xl"
+            className="flex-1 bg-slate-800 hover:bg-slate-700 text-white font-black py-5 px-8 rounded-3xl text-xl transition-all hover:scale-105 active:scale-95 border border-slate-700 shadow-xl"
           >
-            Take Final Quiz
+            Master Quiz
           </button>
         </div>
 
-        <div className="mt-12 flex justify-center gap-8 grayscale opacity-50">
-          <div className="text-sm font-bold uppercase tracking-widest text-slate-500">📍 Place</div>
-          <div className="text-sm font-bold uppercase tracking-widest text-slate-500">⏰ Time</div>
-          <div className="text-sm font-bold uppercase tracking-widest text-slate-500">🏃 Movement</div>
+        <div className="mt-16 flex justify-center gap-10 grayscale opacity-20 pointer-events-none">
+          <div className="flex flex-col items-center">
+            <span className="text-2xl mb-2">📍</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.2em]">Place</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <span className="text-2xl mb-2">⏰</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.2em]">Time</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <span className="text-2xl mb-2">🏃</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.2em]">Motion</span>
+          </div>
         </div>
       </div>
     </div>
