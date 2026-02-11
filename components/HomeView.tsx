@@ -1,7 +1,7 @@
 import React, { useState, Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { PerspectiveCamera, Environment, Float } from '@react-three/drei';
-import Shadow from './Shadow';
+import Aayu from './Aayu';
 
 interface HomeViewProps {
   onLearn: () => void;
@@ -21,7 +21,7 @@ const PREPOSITION_TIPS = [
 ];
 
 const HomeView: React.FC<HomeViewProps> = ({ onLearn, onQuiz }) => {
-  const [tip, setTip] = useState<string>("Hi! I'm Shadow.");
+  const [tip, setTip] = useState<string>("Hi! I'm Aayu.");
   const [emotion, setEmotion] = useState<'happy' | 'thinking' | 'confused' | 'surprised'>('happy');
 
   const handleMascotClick = () => {
@@ -36,27 +36,28 @@ const HomeView: React.FC<HomeViewProps> = ({ onLearn, onQuiz }) => {
 
   return (
     <div className="h-full flex flex-col items-center justify-center bg-slate-950 overflow-hidden relative">
-      {/* 3D Stage - Brighter lights and wider FOV */}
+      {/* 3D Stage */}
       <div className="w-full h-[500px] sm:h-[600px] cursor-pointer">
-        <Canvas>
+        <Canvas shadows>
           <PerspectiveCamera makeDefault position={[0, 0, 14]} fov={36} />
           <Environment preset="city" />
-          <ambientLight intensity={1.5} />
-          <pointLight position={[5, 5, 10]} intensity={4} />
-          <directionalLight position={[-10, 10, 10]} intensity={2.5} />
+          <ambientLight intensity={1.2} />
+          <pointLight position={[10, 10, 10]} intensity={3} castShadow />
+          <spotLight position={[-10, 10, 10]} intensity={2} angle={0.3} penumbra={1} castShadow />
+          <directionalLight position={[0, 5, -5]} intensity={0.5} />
           
           <Suspense fallback={null}>
-            <Float speed={2} rotationIntensity={0.02} floatIntensity={0.1}>
-              <Shadow 
+            <Float speed={2.5} rotationIntensity={0.05} floatIntensity={0.2}>
+              <Aayu 
                 position={[0, -0.4, 0]} 
                 emotion={emotion} 
                 message={tip}
                 onClick={handleMascotClick}
               />
             </Float>
-            <mesh position={[0, -3.2, 0]} rotation={[-Math.PI/2, 0, 0]}>
-              <planeGeometry args={[15, 15]} />
-              <meshBasicMaterial color="#000000" transparent opacity={0.3} />
+            <mesh position={[0, -3.2, 0]} rotation={[-Math.PI/2, 0, 0]} receiveShadow>
+              <planeGeometry args={[20, 20]} />
+              <meshBasicMaterial color="#000000" transparent opacity={0.4} />
             </mesh>
           </Suspense>
         </Canvas>
@@ -68,7 +69,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onLearn, onQuiz }) => {
         </h2>
         
         <p className="text-blue-300/40 mb-10 italic font-medium tracking-tight text-lg sm:text-2xl">
-          "Learn Prepositions with Shadow"
+          "Learn Prepositions with Aayu the Sheep"
         </p>
         
         <div className="flex flex-col sm:flex-row gap-6 w-full max-w-lg">

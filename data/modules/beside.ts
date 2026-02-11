@@ -1,3 +1,4 @@
+
 import { LearningModule } from '../../types';
 
 export const beside: LearningModule = {
@@ -13,7 +14,7 @@ One extra letter completely changes the logic of these two words. One is about s
 Beside describes physical proximity. It means the side of something is near you.
 - Meaning: Physical location next to something.
 
-Example: Shadow sits beside the tree.
+Example: Aayu sits beside the tree.
 Example: Stand beside me for the photo.
 Example: The barn is beside the house.
 
@@ -21,9 +22,9 @@ Example: The barn is beside the house.
 Besides is logical. It means "as well as" or "extra."
 - Meaning: Adding more items to a list.
 
-Example: Besides grass, Shadow likes apples.
+Example: Besides grass, Aayu likes apples.
 Example: Who else is coming besides you?
-Example: I have no friends besides Shadow.
+Example: I have no friends besides Aayu.
 
 #### Memory Hook
 - Beside: Be + Side (Near).

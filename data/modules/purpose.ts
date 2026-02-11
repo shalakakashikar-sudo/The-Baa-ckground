@@ -1,3 +1,4 @@
+
 import { LearningModule } from '../../types';
 
 export const purpose: LearningModule = {
@@ -22,7 +23,7 @@ For explains the "why" or identifies the recipient of an action.
 - Purpose: This is a brush for wool.
 - Recipient: This gift is for you.
 
-Example: Shadow is famous for his wool.
+Example: Aayu is famous for his wool.
 Example: I am waiting for the bus.
 
 #### 3. ABOUT (Topics)
@@ -30,13 +31,13 @@ About identifies the subject or theme of a thought or conversation.
 - Subject: A story about a sheep.
 - Discussion: Talking about the weather.
 
-Example: Shadow is thinking about the future.
+Example: Aayu is thinking about the future.
 Example: Tell me about your day.
 
 #### 4. WITHOUT (The Absence)
 Without shows that a specific part is missing or excluded.
 - Absence: Tea without sugar.
-- State: Shadow feels cold without his bell.
+- State: Aayu feels cold without his bell.
 
 Example: We cannot learn without practice.
 Example: He walked without his shoes.`

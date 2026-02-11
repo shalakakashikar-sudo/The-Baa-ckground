@@ -1,3 +1,4 @@
+
 import { LearningModule } from '../../types';
 
 export const time: LearningModule = {
@@ -11,7 +12,7 @@ Time uses the same pyramid logic as place. We move from long, general periods do
 
 #### 1. IN (Long Periods)
 Months, years, seasons, and centuries.
-Example: Shadow was born in October.
+Example: Aayu was born in October.
 
 #### 2. ON (Days and Dates)
 Specific days and full calendar dates.
@@ -25,7 +26,7 @@ Example: The barn door opens at 3:00 PM.
 - By (The Deadline): Action must be done at or before this time.
 Example: Finish the shearing by Friday.
 - Until (Continuation): Action continues up to this point and then stops.
-Example: Shadow will sleep until noon.
+Example: Aayu will sleep until noon.
 - Before (Earlier): Any time prior to the point.
 Example: Come before the movie starts.
 
@@ -34,5 +35,5 @@ Used to show an action happening throughout a stretch of time.
 Example: It rained during the night.
 
 > ⚠️ The No-Preposition Rule: Do not use at, in, or on if the time word follows Next, Last, This, or Every.
-Example: Shadow went home last night.`
+Example: Aayu went home last night.`
 };

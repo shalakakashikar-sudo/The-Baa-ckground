@@ -1,3 +1,4 @@
+
 import { LearningModule } from '../../types';
 
 export const place: LearningModule = {
@@ -12,7 +13,7 @@ To understand location, imagine an inverted pyramid. We move from general, big a
 #### 1. IN (The Container)
 Think of IN as a 3D space. Cities, countries, rooms, and liquids.
 - Logic: You are inside boundaries.
-Example: Shadow lives in London.
+Example: Aayu lives in London.
 
 #### 2. ON (The Surface)
 Think of ON as a 2D line or flat surface. Contact with the top or side.
@@ -26,9 +27,9 @@ Example: Meet me at the bus stop.
 
 #### Between vs. Among
 - Between: Used for exactly TWO things, or specific distinct items.
-Example: Shadow is between the two rocks.
+Example: Aayu is between the two rocks.
 - Among: Used for a general group of THREE or more.
-Example: Shadow is among friends.
+Example: Aayu is among friends.
 
 #### The Preposition House
 - Over: Above the roof.
@@ -36,5 +37,5 @@ Example: Shadow is among friends.
 - Behind: At the back of the house.
 - In Front Of: Facing the house.
 
-Example: Shadow jumped over the fence.`
+Example: Aayu jumped over the fence.`
 };

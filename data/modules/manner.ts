@@ -1,3 +1,4 @@
+
 import { LearningModule } from '../../types';
 
 export const manner: LearningModule = {
@@ -14,16 +15,16 @@ Used for the "doer" in passive sentences and for transport/communication.
 - Agency: Written by Shakespeare.
 - Transport: Travel by car.
 
-Example: The grass was eaten by Shadow.
+Example: The grass was eaten by Aayu.
 
 #### 2. WITH (The Instrument)
 Used for the specific tool used to complete the action.
-Example: Shadow opened the gate with his nose.
+Example: Aayu opened the gate with his nose.
 Example: Cut the wool with scissors.
 
 #### 3. LIKE vs. AS
 - Like (Similarity): Describes how something looks or acts.
-Example: Shadow acts like a child.
+Example: Aayu acts like a child.
 - As (Role): Describes a real function or job.
 Example: The shepherd works as a teacher.
 

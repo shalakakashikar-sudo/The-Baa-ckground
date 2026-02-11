@@ -1,3 +1,4 @@
+
 import { LearningModule } from '../../types';
 
 export const logic: LearningModule = {
@@ -21,7 +22,7 @@ Example: I went to the store for milk.
 
 #### 3. BECAUSE OF (Cause)
 Explains the reason behind a situation.
-Example: Shadow stayed home because of the rain.
+Example: Aayu stayed home because of the rain.
 
 #### 4. DESPITE (Contrast)
 Shows action happening even with an obstacle.

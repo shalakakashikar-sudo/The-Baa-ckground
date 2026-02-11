@@ -1,3 +1,4 @@
+
 import { LearningModule } from '../../types';
 
 export const foundation: LearningModule = {
@@ -11,18 +12,18 @@ Prepositions are words that show relationships between a noun/pronoun and other 
 
 #### The Sentence Glue
 Without prepositions, English is just a list of disconnected names and actions. They answer questions like where?, when?, how?, and in what manner?
-- Broken: Shadow sits the hill.
-- Connected: Shadow sits on the hill.
+- Broken: Aayu sits the hill.
+- Connected: Aayu sits on the hill.
 
 #### The Simple Formula
 Preposition + Object (noun/pronoun) = Prepositional Phrase
-Example: [Shadow] ← [on] → [the hill]
+Example: [Aayu] ← [on] → [the hill]
 
 #### The Four Main Roles
-1. Place: Where is it? Shadow is in the barn.
-2. Time: When is it? Shadow wakes up at noon.
-3. Direction: Where is it moving? Shadow ran toward the gate.
-4. Logic: Why/Whose is it? This gift is for Shadow.
+1. Place: Where is it? Aayu is in the barn.
+2. Time: When is it? Aayu wakes up at noon.
+3. Direction: Where is it moving? Aayu ran toward the gate.
+4. Logic: Why/Whose is it? This gift is for Aayu.
 
 #### The "GPS" Rule: In, On, at
 To avoid confusion, use the "Pyramid Logic" to visualize how specific a word is:
@@ -32,12 +33,12 @@ To avoid confusion, use the "Pyramid Logic" to visualize how specific a word is:
 
 #### The Rule of the Object
 A preposition must be followed by a noun or a pronoun. This is called the Object of the Preposition.
-Example: Shadow is looking at the gate. (Gate is the object)
+Example: Aayu is looking at the gate. (Gate is the object)
 
 > ⚠️ Pronoun Tip: Always use objective pronouns (me, him, her, us, them) after a preposition. It is always "between you and me," never "between you and I."
 
 #### Preposition vs. Adverb
 If a word looks like a preposition but has no object following it, it is actually an adverb.
-- Preposition: Shadow fell down the stairs. (Object: the stairs)
-- Adverb: Shadow fell down. (No object; it describes the fall itself.)`
+- Preposition: Aayu fell down the stairs. (Object: the stairs)
+- Adverb: Aayu fell down. (No object; it describes the fall itself.)`
 };

@@ -1,3 +1,4 @@
+
 import { LearningModule } from '../../types';
 
 export const nuances: LearningModule = {
@@ -20,20 +21,20 @@ Example: Paper is made from wood.
 - Arrive At: Buildings or small points.
 - Arrive In: Cities, regions, or countries.
 
-Example: Shadow arrived at the station.
-Example: Shadow arrived in London.
+Example: Aayu arrived at the station.
+Example: Aayu arrived in London.
 
 #### 3. Angry With vs. Angry At
 - Angry With: Used for people.
 - Angry At: Used for things or situations.
 
-Example: Shadow is angry with the shepherd.
-Example: Shadow is angry at the rain.
+Example: Aayu is angry with the shepherd.
+Example: Aayu is angry at the rain.
 
 #### 4. Throw To vs. Throw At
 - Throw To: For catching (friendly).
 - Throw At: For hitting (aggressive).
 
-Example: Throw the ball to Shadow.
+Example: Throw the ball to Aayu.
 Example: Throw the stone at the wolf.`
 };

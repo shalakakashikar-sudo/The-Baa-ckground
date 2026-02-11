@@ -1,3 +1,4 @@
+
 import { LearningModule } from '../../types';
 
 export const zero: LearningModule = {
@@ -11,7 +12,7 @@ English has "Zero Preposition" zones where adding a word makes the sentence repe
 
 #### 1. The Logic of Home
 When "Home" is a destination for movement, omit the preposition.
-Example: Shadow walked home (NOT: to home).
+Example: Aayu walked home (NOT: to home).
 Example: Arrive home (NOT: at home).
 
 #### 2. Time Modifiers

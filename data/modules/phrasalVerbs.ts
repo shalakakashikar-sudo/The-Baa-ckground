@@ -1,3 +1,4 @@
+
 import { LearningModule } from '../../types';
 
 export const phrasalVerbs: LearningModule = {
@@ -29,5 +30,5 @@ Example: Look after the baby.
 - R: Replace with a simple verb (e.g., "give up" = quit).
 - F: Feel the meaning change.
 
-Example: Shadow is looking for grass.`
+Example: Aayu is looking for grass.`
 };

@@ -1,11 +1,10 @@
 
-// Fix: Added @ts-nocheck to resolve type errors for Three.js intrinsic elements (mesh, group, etc.) in React Three Fiber
 // @ts-nocheck
 import React, { useState, Suspense, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, PerspectiveCamera, Environment, Float } from '@react-three/drei';
 import { PrepositionPosition } from '../types';
-import Shadow from './Shadow';
+import Aayu from './Aayu';
 
 const Barn = () => (
   <group position={[-4, 0, -4]}>
@@ -124,8 +123,8 @@ const Flowers = () => (
 const MeadowView: React.FC<{ onQuiz: () => void, onBack: () => void }> = ({ onQuiz, onBack }) => {
   const [sheepPos, setSheepPos] = useState<PrepositionPosition>('IN_FRONT_OF_DOOR');
   const [targetCoords, setTargetCoords] = useState<[number, number, number]>([-4, 0, -1.5]);
-  const [currentMessage, setCurrentMessage] = useState<string | null>("Hi! I'm Shadow.");
-  const [sentence, setSentence] = useState<string>("Shadow is at the meadow.");
+  const [currentMessage, setCurrentMessage] = useState<string | null>("Hi! I'm Aayu.");
+  const [sentence, setSentence] = useState<string>("Aayu is at the meadow.");
   const controlsRef = useRef();
 
   const setCameraView = (type: 'default' | 'top' | 'bird' | 'side') => {
@@ -152,23 +151,23 @@ const MeadowView: React.FC<{ onQuiz: () => void, onBack: () => void }> = ({ onQu
     let s = "";
 
     switch (pos) {
-      case 'ON_ROOF': coords = [-4, 3, -4]; s = "Shadow is ON the barn roof."; break;
-      case 'IN_BARN': coords = [-4, 0, -2.5]; s = "Shadow is IN the barn."; break;
-      case 'UNDER_TREE': coords = [4, 0, 4]; s = "Shadow is UNDER the tree."; break;
-      case 'BEHIND_FENCE': coords = [0, 0, 6.5]; s = "Shadow is BEHIND the fence."; break;
-      case 'IN_FRONT_OF_DOOR': coords = [-4, 0, -1.5]; s = "Shadow is IN FRONT OF the door."; break;
-      case 'BESIDE_POND': coords = [2.5, 0, -3]; s = "Shadow is BESIDE the pond."; break;
-      case 'THROUGH_GATE': coords = [-3.5, 0, 5]; s = "Shadow walks THROUGH the gate."; break;
-      case 'ACROSS_BRIDGE': coords = [0, 0.4, -6]; s = "Shadow is ACROSS the bridge."; break;
-      case 'OVER_HOUSE': coords = [-4, 6, -4]; s = "Shadow is OVER the barn."; break;
-      case 'AMONG_FLOWERS': coords = [6, 0, 6]; s = "Shadow is AMONG the flowers."; break;
-      case 'BETWEEN_ROCKS': coords = [-5.6, 0, 2.2]; s = "Shadow is BETWEEN the rocks."; break;
-      case 'ALONG_PATH': coords = [0, 0, -2]; s = "Shadow walks ALONG the path."; break;
-      case 'TOWARD_EXIT': coords = [15, 0, 0]; s = "Shadow heads TOWARD the exit."; break;
-      case 'FROM_HOME': coords = [-15, 0, -15]; s = "Shadow is FROM home."; break;
-      case 'INTO_POND': coords = [5, -0.5, -3]; s = "Shadow jumps INTO the pond!"; break;
-      case 'NEXT_TO_ROCK': coords = [-6.5, 0, 1.2]; s = "Shadow stands NEXT TO the rock."; break;
-      case 'UPON_BARN': coords = [-4, 3.2, -4]; s = "Shadow rests UPON the barn."; break;
+      case 'ON_ROOF': coords = [-4, 3, -4]; s = "Aayu is ON the barn roof."; break;
+      case 'IN_BARN': coords = [-4, 0, -2.5]; s = "Aayu is IN the barn."; break;
+      case 'UNDER_TREE': coords = [4, 0, 4]; s = "Aayu is UNDER the tree."; break;
+      case 'BEHIND_FENCE': coords = [0, 0, 6.5]; s = "Aayu is BEHIND the fence."; break;
+      case 'IN_FRONT_OF_DOOR': coords = [-4, 0, -1.5]; s = "Aayu is IN FRONT OF the door."; break;
+      case 'BESIDE_POND': coords = [2.5, 0, -3]; s = "Aayu is BESIDE the pond."; break;
+      case 'THROUGH_GATE': coords = [-3.5, 0, 5]; s = "Aayu walks THROUGH the gate."; break;
+      case 'ACROSS_BRIDGE': coords = [0, 0.4, -6]; s = "Aayu is ACROSS the bridge."; break;
+      case 'OVER_HOUSE': coords = [-4, 6, -4]; s = "Aayu is OVER the barn."; break;
+      case 'AMONG_FLOWERS': coords = [6, 0, 6]; s = "Aayu is AMONG the flowers."; break;
+      case 'BETWEEN_ROCKS': coords = [-5.6, 0, 2.2]; s = "Aayu is BETWEEN the rocks."; break;
+      case 'ALONG_PATH': coords = [0, 0, -2]; s = "Aayu walks ALONG the path."; break;
+      case 'TOWARD_EXIT': coords = [15, 0, 0]; s = "Aayu heads TOWARD the exit."; break;
+      case 'FROM_HOME': coords = [-15, 0, -15]; s = "Aayu is FROM home."; break;
+      case 'INTO_POND': coords = [5, -0.5, -3]; s = "Aayu jumps INTO the pond!"; break;
+      case 'NEXT_TO_ROCK': coords = [-6.5, 0, 1.2]; s = "Aayu stands NEXT TO the rock."; break;
+      case 'UPON_BARN': coords = [-4, 3.2, -4]; s = "Aayu rests UPON the barn."; break;
     }
     setTargetCoords(coords);
     setSentence(s);
@@ -210,7 +209,7 @@ const MeadowView: React.FC<{ onQuiz: () => void, onBack: () => void }> = ({ onQu
             <Path />
             <Rocks />
             <Flowers />
-            <Shadow 
+            <Aayu 
               position={targetCoords} 
               onClick={() => setCurrentMessage("Baaaa! Don't push!")}
               message={currentMessage}
@@ -268,7 +267,7 @@ const MeadowView: React.FC<{ onQuiz: () => void, onBack: () => void }> = ({ onQu
       <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-10 w-full max-w-xl px-4">
         <div className="bg-white/80 backdrop-blur-xl text-slate-900 p-6 rounded-3xl shadow-2xl text-center font-brand font-bold text-2xl border border-white">
            {sentence.split(' ').map((word, i) => {
-             const isPrep = word.toUpperCase() === word && word.length > 1 && word !== "SHADOW";
+             const isPrep = word.toUpperCase() === word && word.length > 1 && word !== "AAYU";
              return <span key={i} className={isPrep ? "text-blue-600 px-1" : "px-1"}>{word}</span>;
            })}
         </div>

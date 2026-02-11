@@ -1,3 +1,4 @@
+
 import { LearningModule } from '../../types';
 
 export const phrase: LearningModule = {
@@ -13,7 +14,7 @@ A preposition never likes to be alone. It is the captain of a team called a Prep
 A phrase is rarely just two words. Usually, there are descriptive words (modifiers) in the middle.
 Structure: Preposition + Modifiers + Object
 
-Example: Shadow is in the rusty, old box.
+Example: Aayu is in the rusty, old box.
 
 #### Reference: Single-Word Prepositions
 about, above, across, after, against, along, among, around, as, at, before, behind, below, beneath, beside, between, beyond, by, despite, down, during, except, for, from, in, inside, into, like, near, of, off, on, onto, outside, over, past, since, through, throughout, to, toward, under, underneath, until, up, upon, with, within, without.
@@ -28,5 +29,5 @@ The "old rule" said never end a sentence with a preposition. Modern English logi
 
 #### Fronting for Emphasis
 Sometimes we move the prepositional phrase to the very beginning to add focus to the location or time.
-Example: Under the old oak tree, Shadow was hiding.`
+Example: Under the old oak tree, Aayu was hiding.`
 };

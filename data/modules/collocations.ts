@@ -1,3 +1,4 @@
+
 import { LearningModule } from '../../types';
 
 export const collocations: LearningModule = {
@@ -15,7 +16,7 @@ Example: I am interested in learning.
 
 #### Verb Pairings
 - Depend on, Belong to, Consist of, Wait for, Listen to, Arrive at (small)/in (city).
-Example: Shadow belongs to the farm.
+Example: Aayu belongs to the farm.
 
 #### Noun Pairings
 - Reason for, Solution to, Increase in, Damage to, Attitude toward.
