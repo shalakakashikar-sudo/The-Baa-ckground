@@ -211,6 +211,7 @@ const MeadowView: React.FC<{ onQuiz: () => void, onBack: () => void }> = ({ onQu
             <Flowers />
             <Aayu 
               position={targetCoords} 
+              scale={[1.5, 1.5, 1.5]} // Adjusted for the meadow world context
               onClick={() => setCurrentMessage("Baaaa! Don't push!")}
               message={currentMessage}
               prepositionContext={sheepPos}

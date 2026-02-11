@@ -1,7 +1,10 @@
 
 // Fix: Added React to imports to resolve namespace error for React.FC
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState, Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { PerspectiveCamera, Environment, Float } from '@react-three/drei';
 import { studyGuide } from '../data/studyGuide';
+import Aayu from './Aayu';
 
 interface LearnViewProps {
   selectedModuleIndex: number | null;
@@ -9,6 +12,23 @@ interface LearnViewProps {
   onBack: () => void;
   onQuiz: () => void;
 }
+
+const PREPOSITION_TIPS = [
+  "Use 'at' for points!",
+  "Use 'in' for spaces!",
+  "Use 'on' for surfaces!",
+  "Into = Entering",
+  "Onto = Landing",
+  "Between = Two",
+  "Among = Many",
+  "By = Deadline",
+  "Since = Start",
+  "Need a break? 🐑",
+  "Prepositions are glue!",
+  "Context is everything.",
+  "You're doing great!",
+  "Click me for more tips!"
+];
 
 const colorMap: Record<string, { bg: string, border: string, text: string, accent: string, hover: string, highlight: string }> = {
   blue: { bg: 'bg-blue-600/10', border: 'border-blue-600/20', text: 'text-blue-400', accent: 'bg-blue-600', hover: 'hover:border-blue-500/50', highlight: 'text-blue-300' },
@@ -28,6 +48,8 @@ const KEYWORDS = [
 
 export const LearnView: React.FC<LearnViewProps> = ({ selectedModuleIndex, setSelectedModuleIndex, onBack, onQuiz }) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [tip, setTip] = useState<string | null>("Let's study together!");
+  const [emotion, setEmotion] = useState<'happy' | 'thinking' | 'confused' | 'surprised'>('happy');
 
   useEffect(() => {
     if (scrollContainerRef.current) {
@@ -45,6 +67,16 @@ export const LearnView: React.FC<LearnViewProps> = ({ selectedModuleIndex, setSe
     if (selectedModuleIndex !== null && selectedModuleIndex > 0) {
       setSelectedModuleIndex(selectedModuleIndex - 1);
     }
+  };
+
+  const handleAayuClick = () => {
+    const randomTip = PREPOSITION_TIPS[Math.floor(Math.random() * PREPOSITION_TIPS.length)];
+    const emotions: ('happy' | 'thinking' | 'confused' | 'surprised')[] = ['happy', 'thinking', 'confused', 'surprised'];
+    setTip(null);
+    setTimeout(() => {
+      setTip(randomTip);
+      setEmotion(emotions[Math.floor(Math.random() * emotions.length)]);
+    }, 50);
   };
 
   const highlightKeywords = (text: string, palette: any) => {
@@ -154,7 +186,30 @@ export const LearnView: React.FC<LearnViewProps> = ({ selectedModuleIndex, setSe
         ref={scrollContainerRef}
         className="h-full overflow-y-auto bg-slate-950 scroll-smooth selection:bg-blue-500/30"
       >
-        <div className="max-w-4xl mx-auto p-6 md:p-12 animate-in fade-in zoom-in-95 duration-500">
+        {/* Sticky Aayu Mascot for Large Screens - Smaller Scale for Module View */}
+        <div className="hidden lg:block fixed left-4 top-1/2 -translate-y-1/2 w-[300px] h-[500px] pointer-events-none z-40">
+          <div className="w-full h-full pointer-events-auto">
+            <Canvas shadows gl={{ antialias: true }} dpr={[1, 2]}>
+              <PerspectiveCamera makeDefault position={[0, 0, 16]} fov={30} />
+              <Environment preset="city" />
+              <ambientLight intensity={1.5} />
+              <pointLight position={[10, 10, 10]} intensity={2} />
+              <Suspense fallback={null}>
+                <Float speed={3} rotationIntensity={0.1} floatIntensity={0.5}>
+                  <Aayu 
+                    position={[0, -0.5, 0]} 
+                    scale={[0.8, 0.8, 0.8]} // Less than half of the home size (2.0)
+                    emotion={emotion} 
+                    message={tip} 
+                    onClick={handleAayuClick} 
+                  />
+                </Float>
+              </Suspense>
+            </Canvas>
+          </div>
+        </div>
+
+        <div className="max-w-4xl mx-auto p-6 md:p-12 animate-in fade-in zoom-in-95 duration-500 relative z-10">
           <div className="flex justify-between items-center mb-10">
             <button 
               onClick={() => setSelectedModuleIndex(null)}

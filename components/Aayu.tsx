@@ -1,3 +1,4 @@
+
 // @ts-nocheck
 import React, { useRef, useMemo, useState, useEffect } from 'react';
 import { useFrame } from '@react-three/fiber';
@@ -9,12 +10,19 @@ type Emotion = 'happy' | 'thinking' | 'confused' | 'surprised';
 
 interface AayuProps {
   position?: [number, number, number];
+  scale?: [number, number, number];
   emotion?: Emotion;
   message?: string | null;
   onClick: () => void;
 }
 
-const Aayu: React.FC<AayuProps> = ({ position = [0, 0, 0], emotion = 'happy', message, onClick }) => {
+const Aayu: React.FC<AayuProps> = ({ 
+  position = [0, 0, 0], 
+  scale = [2.0, 2.0, 2.0], // Default scale matching the "perfect" home view size
+  emotion = 'happy', 
+  message, 
+  onClick 
+}) => {
   const mainGroupRef = useRef<THREE.Group>(null);
   const headRef = useRef<THREE.Group>(null);
   const [blinkScale, setBlinkScale] = useState(1);
@@ -80,40 +88,40 @@ const Aayu: React.FC<AayuProps> = ({ position = [0, 0, 0], emotion = 'happy', me
   // --- STYLES ---
   const bubbleStyle = {
     background: 'white',
-    padding: '16px 24px',
-    borderRadius: '24px',
-    boxShadow: '0 20px 60px rgba(0,0,0,0.2)',
-    border: '4px solid #f8fafc',
-    minWidth: '180px',
-    maxWidth: '260px',
+    padding: '12px 20px',
+    borderRadius: '20px',
+    boxShadow: '0 15px 40px rgba(0,0,0,0.15)',
+    border: '3px solid #f8fafc',
+    minWidth: '140px',
+    maxWidth: '220px',
     textAlign: 'center',
     pointerEvents: 'none',
     color: '#1e293b',
     fontFamily: '"Quicksand", sans-serif',
-    fontSize: '18px',
+    fontSize: '16px',
     fontWeight: '800',
-    lineHeight: '1.3',
+    lineHeight: '1.2',
     position: 'relative',
     userSelect: 'none'
   };
 
   const arrowStyle = {
     position: 'absolute',
-    top: '50%',
-    left: '-16px',
-    transform: 'translateY(-50%)',
+    bottom: '-12px',
+    left: '50%',
+    transform: 'translateX(-50%)',
     width: 0,
     height: 0,
-    borderTop: '12px solid transparent',
-    borderBottom: '12px solid transparent',
-    borderRight: '16px solid white',
+    borderLeft: '10px solid transparent',
+    borderRight: '10px solid transparent',
+    borderTop: '12px solid white',
   };
 
   return (
     <group position={position} onClick={(e) => { e.stopPropagation(); onClick(); }}>
       
-      {/* 2.0x Overall Scaling */}
-      <group ref={mainGroupRef} scale={[2.0, 2.0, 2.0]}>
+      {/* mascot scale controlled via prop */}
+      <group ref={mainGroupRef} scale={scale}>
         
         {/* ================= BODY ================= */}
         <group>
@@ -218,28 +226,30 @@ const Aayu: React.FC<AayuProps> = ({ position = [0, 0, 0], emotion = 'happy', me
             </group>
           </group>
         </group>
-      </group>
 
-      {/* ================= UI OVERLAYS ================= */}
-      {message && (
-        <Html position={[3.5, 3.5, 0]} center distanceFactor={12}>
-          <div style={bubbleStyle} className="animate-in fade-in zoom-in duration-500">
-            <div style={arrowStyle}></div>
-            <p style={{ margin: 0 }}>{message}</p>
-          </div>
+        {/* ================= UI OVERLAYS ================= */}
+        {/* Moved inside the scaled group to stay proportional */}
+        {message && (
+          <Html position={[0, 1.8, 0]} center distanceFactor={8}>
+            <div style={bubbleStyle} className="animate-in fade-in zoom-in duration-300">
+              <div style={arrowStyle}></div>
+              <p style={{ margin: 0 }}>{message}</p>
+            </div>
+          </Html>
+        )}
+
+        {/* Helper Prompt */}
+        <Html position={[0, -1.2, 0]} center>
+           <div style={{
+              color: 'rgba(255,255,255,0.25)', fontSize: '10px', fontWeight: '900', 
+              textTransform: 'uppercase', letterSpacing: '0.4em', whiteSpace: 'nowrap',
+              pointerEvents: 'none'
+           }}>
+              Click Aayu
+           </div>
         </Html>
-      )}
 
-      {/* Helper Prompt */}
-      <Html position={[0, -3.8, 0]} center>
-         <div style={{
-            color: 'rgba(255,255,255,0.25)', fontSize: '12px', fontWeight: '900', 
-            textTransform: 'uppercase', letterSpacing: '0.6em', whiteSpace: 'nowrap',
-            pointerEvents: 'none'
-         }}>
-            Click Aayu
-         </div>
-      </Html>
+      </group>
 
     </group>
   );

@@ -1,3 +1,4 @@
+
 import React, { useState, Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { PerspectiveCamera, Environment, Float } from '@react-three/drei';
@@ -50,6 +51,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onLearn, onQuiz }) => {
             <Float speed={2.5} rotationIntensity={0.05} floatIntensity={0.2}>
               <Aayu 
                 position={[0, -0.4, 0]} 
+                scale={[2.0, 2.0, 2.0]} // Perfect home size
                 emotion={emotion} 
                 message={tip}
                 onClick={handleMascotClick}
