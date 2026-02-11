@@ -238,8 +238,8 @@ const Aayu: React.FC<AayuProps> = ({
           </Html>
         )}
 
-        {/* Helper Prompt */}
-        <Html position={[0, -1.2, 0]} center>
+        {/* Helper Prompt - Shifted lower as requested */}
+        <Html position={[0, -1.6, 0]} center>
            <div style={{
               color: 'rgba(255,255,255,0.25)', fontSize: '10px', fontWeight: '900', 
               textTransform: 'uppercase', letterSpacing: '0.4em', whiteSpace: 'nowrap',
