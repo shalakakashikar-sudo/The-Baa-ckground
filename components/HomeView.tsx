@@ -36,53 +36,51 @@ const HomeView: React.FC<HomeViewProps> = ({ onLearn, onQuiz }) => {
 
   return (
     <div className="h-full flex flex-col items-center justify-center bg-slate-950 overflow-hidden relative">
-      {/* 3D Stage - Adjusted FOV to accommodate distant speech bubble */}
-      <div className="w-full h-[400px] sm:h-[500px] cursor-pointer">
+      {/* 3D Stage - Brighter lights and wider FOV */}
+      <div className="w-full h-[500px] sm:h-[600px] cursor-pointer">
         <Canvas>
-          <PerspectiveCamera makeDefault position={[0, 0, 10]} fov={32} />
+          <PerspectiveCamera makeDefault position={[0, 0, 14]} fov={36} />
           <Environment preset="city" />
-          <ambientLight intensity={1.0} />
-          <pointLight position={[5, 5, 5]} intensity={2.5} />
-          <directionalLight position={[-5, 5, 5]} intensity={1.5} />
+          <ambientLight intensity={1.5} />
+          <pointLight position={[5, 5, 10]} intensity={4} />
+          <directionalLight position={[-10, 10, 10]} intensity={2.5} />
           
           <Suspense fallback={null}>
-            <Float speed={2} rotationIntensity={0.05} floatIntensity={0.15}>
+            <Float speed={2} rotationIntensity={0.02} floatIntensity={0.1}>
               <Shadow 
-                position={[0, -0.6, 0]} 
+                position={[0, -0.4, 0]} 
                 emotion={emotion} 
                 message={tip}
                 onClick={handleMascotClick}
               />
             </Float>
-            {/* Soft floor shadow */}
-            <mesh position={[0, -2.4, 0]} rotation={[-Math.PI/2, 0, 0]}>
-              <planeGeometry args={[8, 8]} />
-              <meshBasicMaterial color="#000000" transparent opacity={0.25} />
+            <mesh position={[0, -3.2, 0]} rotation={[-Math.PI/2, 0, 0]}>
+              <planeGeometry args={[15, 15]} />
+              <meshBasicMaterial color="#000000" transparent opacity={0.3} />
             </mesh>
           </Suspense>
         </Canvas>
       </div>
 
-      <div className="px-4 pb-16 w-full max-w-5xl flex flex-col items-center z-10 relative">
-        {/* Strictly single line title with optimized scaling */}
-        <h2 className="font-brand text-[clamp(2.5rem,8vw,5.5rem)] font-black mb-4 text-white tracking-tighter whitespace-nowrap overflow-visible text-center leading-none">
+      <div className="px-4 pb-16 w-full max-w-6xl flex flex-col items-center z-10 relative">
+        <h2 className="font-brand text-[clamp(2.5rem,10vw,6rem)] font-black mb-4 text-white tracking-tighter whitespace-nowrap overflow-visible text-center leading-none">
           The Baa-ckground
         </h2>
         
-        <p className="text-blue-300/40 mb-10 italic font-medium tracking-tight text-base sm:text-lg">
+        <p className="text-blue-300/40 mb-10 italic font-medium tracking-tight text-lg sm:text-2xl">
           "Learn Prepositions with Shadow"
         </p>
         
-        <div className="flex flex-col sm:flex-row gap-5 w-full max-w-sm">
+        <div className="flex flex-col sm:flex-row gap-6 w-full max-w-lg">
           <button
             onClick={onLearn}
-            className="flex-1 bg-white text-slate-950 font-black py-5 rounded-2xl transition-all hover:scale-105 active:scale-95 shadow-2xl"
+            className="flex-1 bg-white text-slate-950 font-black py-6 rounded-[2rem] transition-all hover:scale-105 active:scale-95 shadow-2xl text-xl"
           >
             Start Learning
           </button>
           <button
             onClick={onQuiz}
-            className="flex-1 bg-slate-800 hover:bg-slate-700 text-white font-black py-5 rounded-2xl transition-all hover:scale-105 active:scale-95 border border-slate-700"
+            className="flex-1 bg-slate-900 hover:bg-slate-800 text-white font-black py-6 rounded-[2rem] transition-all hover:scale-105 active:scale-95 border border-slate-800 text-xl"
           >
             Master Quiz
           </button>
